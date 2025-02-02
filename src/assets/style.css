@@ -1,25 +1,64 @@
 /* src/assets/style.css */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #fff; /* Fondo blanco */
-    color: #333;
+
+/* Utilidad para centrar elementos */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
+  /* Preparación global */
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+  
+  body {
+    position: relative;
+    background-image: linear-gradient(135deg, #f97794 10%, #623aa2 100%);
+    /* Centrado global para la página */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  /* Capa de overlay para el efecto glass en el fondo */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+  }
+  
+  /* Contenedor principal de la aplicación */
   .container {
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
     padding: 1rem;
   }
   
-  /* Encabezado y navegación con colores del ejemplo */
+  /* Estilos para el header (navegación) */
   header {
-    background-color: #1F497D; /* Azul oscuro */
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
     padding: 1rem;
+    border-radius: 8px;
     margin-bottom: 1rem;
+    backdrop-filter: blur(5px);
   }
   
+  /* Navegación centralizada */
   nav {
     display: flex;
     gap: 1rem;
@@ -30,7 +69,7 @@ body {
     text-decoration: none;
     font-weight: bold;
     padding: 0.5rem 1rem;
-    background-color: #70AD47; /* Verde */
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     text-align: center;
     color: #fff;
@@ -38,26 +77,42 @@ body {
   }
   
   .nav-button:hover {
-    background-color: #548235; /* Verde más oscuro */
+    background-color: rgba(255, 255, 255, 0.3);
   }
   
-  /* Estilos para los botones del menú principal (OperationMenu) */
+  /* Landing page: Menú de operaciones */
+  .operation-menu {
+    text-align: center;
+  }
+  
+  .operation-menu h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .menu-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
   .menu-button {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    background-color: #70AD47;
-    color: #fff;
-    padding: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem 1.5rem;
     border-radius: 8px;
     min-width: 120px;
-    transition: background-color 0.3s;
+    transition: background 0.3s;
+    color: #fff;
   }
   
   .menu-button:hover {
-    background-color: #548235;
+    background: rgba(255, 255, 255, 0.3);
   }
   
   .operator {
@@ -65,49 +120,51 @@ body {
     margin-bottom: 0.5rem;
   }
   
-  /* Botones para operaciones (Suma, Resta, Multiplicación) */
+  /* Botones internos para operaciones (ej. Suma, Resta, Multiplicación) */
   button {
     padding: 0.5rem 1rem;
-    cursor: pointer;
     border: none;
-    background-color: #70AD47;
-    color: #fff;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
     text-align: center;
   }
   
   button:hover {
-    background-color: #548235;
+    background: rgba(255, 255, 255, 0.3);
   }
   
-  /* Inputs para números */
+  /* Inputs numéricos */
   input[type="number"] {
     width: 60px;
     padding: 0.3rem;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
     transition: border-color 0.3s;
   }
   
   input[type="number"]:focus {
-    border-color: #70AD47;
+    border-color: #fff;
     outline: none;
   }
   
-  /* Estilos para la tabla (centrada) */
+  /* Estilos para tablas (en MatrixEditor) */
   table {
-    width: auto;
+    border-collapse: collapse;
     margin: 0 auto;
   }
   
   table td {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 0.5rem;
   }
   
-  /* Transición fade (para MatrixEditor y resultados) */
+  /* Transiciones para animaciones */
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.5s;
   }
@@ -115,7 +172,6 @@ body {
     opacity: 0;
   }
   
-  /* Transición slide-down para el header */
   .slide-down-enter-active {
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
   }
@@ -126,5 +182,53 @@ body {
   .slide-down-enter-to {
     transform: translateY(0);
     opacity: 1;
+  }
+  
+  /* Efecto glass (opcional, para íconos o elementos decorativos) */
+  .glassIco {
+    --width: 100px;
+    width: var(--width);
+    height: var(--width);
+    color: #fff;
+    font-size: 30px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-right-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    margin: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    transition: 200ms;
+  }
+  
+  .glassIco::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: 400ms;
+    transform: skewX(45deg) translateX(calc(var(--width) + 50%));
+  }
+  
+  .glassIco:hover {
+    transform: translateY(-20px);
+  }
+  
+  .glassIco:hover::before {
+    transform: skewX(45deg) translateX(calc(var(--width) * -1 - 50%));
+  }
+  
+  .glassIco > * {
+    opacity: 0.8;
   }
   

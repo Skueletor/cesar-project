@@ -1,36 +1,64 @@
 /* src/assets/style.css */
 
-/* Variables basadas en el ejemplo, con acento más neutro */
-:root {
-  --primary-color: #1F497D;       /* Azul oscuro (como en el ejemplo) */
-  --accent-color:  #3A6EA5;        /* Azul intermedio, más neutro en lugar de verde */
-  --accent-color-dark: #2A4A80;     /* Azul oscuro para hover */
-  --background-color: #ffffff;      /* Fondo blanco */
-  --text-color: #333333;
+/* Utilidad para centrar elementos */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Estilos globales */
+/* Preparación global */
+html,
 body {
-  margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  margin: 0;
+  height: 100%;
 }
 
+body {
+  position: relative;
+  background-image: linear-gradient(135deg, #f97794 10%, #623aa2 100%);
+  /* Centrado global para la página */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Capa de overlay para el efecto glass en el fondo */
+body::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+/* Contenedor principal de la aplicación */
 .container {
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
   padding: 1rem;
 }
 
-/* Encabezado y navegación */
+/* Estilos para el header (navegación) */
 header {
-  background-color: var(--primary-color);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
+  border-radius: 8px;
   margin-bottom: 1rem;
+  backdrop-filter: blur(5px);
 }
 
+/* Navegación centralizada */
 nav {
   display: flex;
   gap: 1rem;
@@ -41,24 +69,20 @@ nav {
   text-decoration: none;
   font-weight: bold;
   padding: 0.5rem 1rem;
-  background-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   text-align: center;
-  color: var(--background-color);
+  color: #fff;
   transition: background-color 0.3s;
 }
 
 .nav-button:hover {
-  background-color: var(--accent-color-dark);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Estilos para el menú de operaciones (landing page) */
+/* Landing page: Menú de operaciones */
 .operation-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  text-align: center;
 }
 
 .operation-menu h1 {
@@ -69,6 +93,7 @@ nav {
 .menu-options {
   display: flex;
   gap: 1rem;
+  justify-content: center;
   margin-top: 2rem;
 }
 
@@ -78,16 +103,16 @@ nav {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  background-color: var(--accent-color);
-  color: var(--background-color);
+  background: rgba(255, 255, 255, 0.2);
   padding: 1rem 1.5rem;
   border-radius: 8px;
   min-width: 120px;
-  transition: background-color 0.3s;
+  transition: background 0.3s;
+  color: #fff;
 }
 
 .menu-button:hover {
-  background-color: var(--accent-color-dark);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .operator {
@@ -95,49 +120,51 @@ nav {
   margin-bottom: 0.5rem;
 }
 
-/* Botones de operaciones internas (Suma, Resta, Multiplicación) */
+/* Botones internos para operaciones (ej. Suma, Resta, Multiplicación) */
 button {
   padding: 0.5rem 1rem;
-  cursor: pointer;
   border: none;
-  background-color: var(--accent-color);
-  color: var(--background-color);
   border-radius: 4px;
-  transition: background-color 0.3s;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
   text-align: center;
 }
 
 button:hover {
-  background-color: var(--accent-color-dark);
+  background: rgba(255, 255, 255, 0.3);
 }
 
-/* Inputs para números */
+/* Inputs numéricos */
 input[type="number"] {
   width: 60px;
   padding: 0.3rem;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
   transition: border-color 0.3s;
 }
 
 input[type="number"]:focus {
-  border-color: var(--accent-color);
+  border-color: #fff;
   outline: none;
 }
 
-/* Tablas centradas (para el MatrixEditor) */
+/* Estilos para tablas (en MatrixEditor) */
 table {
-  width: auto;
+  border-collapse: collapse;
   margin: 0 auto;
 }
 
 table td {
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 0.5rem;
 }
 
-/* Transiciones */
+/* Transiciones para animaciones */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
@@ -155,4 +182,52 @@ table td {
 .slide-down-enter-to {
   transform: translateY(0);
   opacity: 1;
+}
+
+/* Efecto glass (opcional, para íconos o elementos decorativos) */
+.glassIco {
+  --width: 100px;
+  width: var(--width);
+  height: var(--width);
+  color: #fff;
+  font-size: 30px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  margin: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  transition: 200ms;
+}
+
+.glassIco::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: 400ms;
+  transform: skewX(45deg) translateX(calc(var(--width) + 50%));
+}
+
+.glassIco:hover {
+  transform: translateY(-20px);
+}
+
+.glassIco:hover::before {
+  transform: skewX(45deg) translateX(calc(var(--width) * -1 - 50%));
+}
+
+.glassIco > * {
+  opacity: 0.8;
 }

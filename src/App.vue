@@ -4,9 +4,9 @@
     <transition name="slide-down">
       <header v-if="$route.path !== '/'" class="header">
         <nav>
-          <router-link to="/suma" class="nav-button">Suma</router-link>
-          <router-link to="/resta" class="nav-button">Resta</router-link>
-          <router-link to="/multiplicacion" class="nav-button">Multiplicación</router-link>
+          <router-link to="/suma" class="nav-button">+</router-link>
+          <router-link to="/resta" class="nav-button">−</router-link>
+          <router-link to="/multiplicacion" class="nav-button">×</router-link>
         </nav>
       </header>
     </transition>

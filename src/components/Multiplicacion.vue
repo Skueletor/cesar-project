@@ -1,16 +1,13 @@
-<!-- src/components/Multiplicacion.vue -->
 <template>
   <div class="multiplicacion-container">
-    <h2>Multiplicación de Matrices</h2>
-    <!-- Editor para Matriz A -->
+    <h2><span class="operator">×</span> Multiplicación de Matrices</h2>
     <MatrixEditor v-model:modelValue="matrixA" label="Matriz A" />
-    <!-- Editor para Matriz B -->
     <MatrixEditor v-model:modelValue="matrixB" label="Matriz B" />
     <button @click="multiplicarMatrices">Multiplicar</button>
     <transition name="fade">
       <div v-if="resultado !== null" class="resultado">
         <h3>Resultado</h3>
-        <pre>{{ resultadoFormatted }}</pre>
+        <MatrixResult :result="resultado" label="Resultado" />
       </div>
     </transition>
   </div>
@@ -18,11 +15,12 @@
 
 <script>
 import MatrixEditor from './MatrixEditor.vue'
+import MatrixResult from './MatrixResult.vue'
 import { multiply } from 'mathjs'
 
 export default {
   name: 'Multiplicacion',
-  components: { MatrixEditor },
+  components: { MatrixEditor, MatrixResult },
   data() {
     return {
       matrixA: null,
@@ -30,21 +28,16 @@ export default {
       resultado: null
     }
   },
-  computed: {
-    resultadoFormatted() {
-      return JSON.stringify(this.resultado, null, 2);
-    }
-  },
   methods: {
     multiplicarMatrices() {
       try {
         if (this.matrixA && this.matrixB) {
-          this.resultado = multiply(this.matrixA, this.matrixB);
+          this.resultado = multiply(this.matrixA, this.matrixB)
         } else {
-          alert("Por favor, genera ambas matrices primero.");
+          alert('Por favor, genera ambas matrices primero.')
         }
       } catch (error) {
-        alert("Error al multiplicar matrices: " + error.message);
+        alert('Error al multiplicar matrices: ' + error.message)
       }
     }
   }
@@ -52,8 +45,14 @@ export default {
 </script>
 
 <style scoped>
-.multiplicacion-container h2 {
-  margin-bottom: 1rem;
+.multiplicacion-container {
+  margin: 1rem;
+}
+.operator {
+  color: #f77;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  font-size: 1.2em;
 }
 .resultado {
   margin-top: 1rem;
