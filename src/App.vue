@@ -1,14 +1,15 @@
-<!-- src/App.vue -->
 <template>
   <div class="container">
-    <!-- Solo se muestra el header (navegación) cuando la ruta no es "/" -->
-    <header v-if="$route.path !== '/'">
-      <nav>
-        <router-link to="/suma" class="nav-button">Suma</router-link>
-        <router-link to="/resta" class="nav-button">Resta</router-link>
-        <router-link to="/multiplicacion" class="nav-button">Multiplicación</router-link>
-      </nav>
-    </header>
+    <!-- Header animado solo en rutas distintas de "/" -->
+    <transition name="slide-down">
+      <header v-if="$route.path !== '/'" class="header">
+        <nav>
+          <router-link to="/suma" class="nav-button">Suma</router-link>
+          <router-link to="/resta" class="nav-button">Resta</router-link>
+          <router-link to="/multiplicacion" class="nav-button">Multiplicación</router-link>
+        </nav>
+      </header>
+    </transition>
     <main>
       <router-view />
     </main>
