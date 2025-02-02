@@ -2,12 +2,9 @@
 <template>
   <div class="suma-container">
     <h2>Suma de Matrices</h2>
-    <!-- Editor para Matriz A -->
     <MatrixEditor v-model:modelValue="matrixA" label="Matriz A" />
-    <!-- Editor para Matriz B -->
     <MatrixEditor v-model:modelValue="matrixB" label="Matriz B" />
     <button @click="sumarMatrices">Sumar</button>
-    <!-- Mostrar resultado -->
     <transition name="fade">
       <div v-if="resultado !== null" class="resultado">
         <h3>Resultado</h3>
@@ -28,7 +25,7 @@ export default {
     return {
       matrixA: null,
       matrixB: null,
-      resultado: null,
+      resultado: null
     }
   },
   computed: {

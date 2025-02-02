@@ -45,7 +45,7 @@
         rows: 0,
         cols: 0,
         matrix: [],
-        matrixGenerated: false,
+        matrixGenerated: false
       }
     },
     methods: {
@@ -64,7 +64,6 @@
       }
     },
     watch: {
-      // Cada vez que se modifiquen los valores en la matriz, se emite el cambio.
       matrix: {
         handler(newVal) {
           this.$emit('update:modelValue', newVal);
@@ -91,12 +90,6 @@
   .matrix-grid td {
     border: 1px solid #ccc;
     padding: 0.5rem;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter-from, .fade-leave-to {
-    opacity: 0;
   }
   </style>
   

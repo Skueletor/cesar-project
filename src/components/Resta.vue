@@ -1,36 +1,48 @@
+<!-- src/components/Resta.vue -->
 <template>
   <div class="resta-container">
     <h2>Resta de Matrices</h2>
-    <MatrixInput v-model:modelValue="matrixA" label="Matriz A" />
-    <MatrixInput v-model:modelValue="matrixB" label="Matriz B" />
+    <MatrixEditor v-model:modelValue="matrixA" label="Matriz A" />
+    <MatrixEditor v-model:modelValue="matrixB" label="Matriz B" />
     <button @click="restarMatrices">Restar</button>
     <transition name="fade">
-      <MatrixResult v-if="resultado !== null" :result="resultado" label="Resultado" />
+      <div v-if="resultado !== null" class="resultado">
+        <h3>Resultado</h3>
+        <pre>{{ resultadoFormatted }}</pre>
+      </div>
     </transition>
   </div>
 </template>
 
 <script>
-import MatrixInput from './MatrixInput.vue'
-import MatrixResult from './MatrixResult.vue'
+import MatrixEditor from './MatrixEditor.vue'
 import { subtract } from 'mathjs'
 
 export default {
   name: 'Resta',
-  components: { MatrixInput, MatrixResult },
+  components: { MatrixEditor },
   data() {
     return {
-      matrixA: [],
-      matrixB: [],
+      matrixA: null,
+      matrixB: null,
       resultado: null
+    }
+  },
+  computed: {
+    resultadoFormatted() {
+      return JSON.stringify(this.resultado, null, 2);
     }
   },
   methods: {
     restarMatrices() {
       try {
-        this.resultado = subtract(this.matrixA, this.matrixB)
+        if (this.matrixA && this.matrixB) {
+          this.resultado = subtract(this.matrixA, this.matrixB);
+        } else {
+          alert("Por favor, genera ambas matrices primero.");
+        }
       } catch (error) {
-        alert("Error al restar matrices: " + error.message)
+        alert("Error al restar matrices: " + error.message);
       }
     }
   }
@@ -41,10 +53,7 @@ export default {
 .resta-container h2 {
   margin-bottom: 1rem;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+.resultado {
+  margin-top: 1rem;
 }
 </style>
