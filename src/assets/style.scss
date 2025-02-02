@@ -1,10 +1,21 @@
 /* src/assets/style.css */
+
+/* Variables basadas en el ejemplo, con acento más neutro */
+:root {
+  --primary-color: #1F497D;       /* Azul oscuro (como en el ejemplo) */
+  --accent-color:  #3A6EA5;        /* Azul intermedio, más neutro en lugar de verde */
+  --accent-color-dark: #2A4A80;     /* Azul oscuro para hover */
+  --background-color: #ffffff;      /* Fondo blanco */
+  --text-color: #333333;
+}
+
+/* Estilos globales */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #fff; /* Fondo blanco */
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .container {
@@ -13,9 +24,9 @@ body {
   padding: 1rem;
 }
 
-/* Encabezado y navegación con colores del ejemplo */
+/* Encabezado y navegación */
 header {
-  background-color: #1F497D; /* Azul oscuro */
+  background-color: var(--primary-color);
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -30,34 +41,53 @@ nav {
   text-decoration: none;
   font-weight: bold;
   padding: 0.5rem 1rem;
-  background-color: #70AD47; /* Verde */
+  background-color: var(--accent-color);
   border-radius: 4px;
   text-align: center;
-  color: #fff;
+  color: var(--background-color);
   transition: background-color 0.3s;
 }
 
 .nav-button:hover {
-  background-color: #548235; /* Verde más oscuro */
+  background-color: var(--accent-color-dark);
 }
 
-/* Estilos para los botones del menú principal (OperationMenu) */
+/* Estilos para el menú de operaciones (landing page) */
+.operation-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.operation-menu h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.menu-options {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 .menu-button {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  background-color: #70AD47;
-  color: #fff;
-  padding: 1rem;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 1rem 1.5rem;
   border-radius: 8px;
   min-width: 120px;
   transition: background-color 0.3s;
 }
 
 .menu-button:hover {
-  background-color: #548235;
+  background-color: var(--accent-color-dark);
 }
 
 .operator {
@@ -65,20 +95,20 @@ nav {
   margin-bottom: 0.5rem;
 }
 
-/* Botones para operaciones (Suma, Resta, Multiplicación) */
+/* Botones de operaciones internas (Suma, Resta, Multiplicación) */
 button {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border: none;
-  background-color: #70AD47;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--background-color);
   border-radius: 4px;
   transition: background-color 0.3s;
   text-align: center;
 }
 
 button:hover {
-  background-color: #548235;
+  background-color: var(--accent-color-dark);
 }
 
 /* Inputs para números */
@@ -92,11 +122,11 @@ input[type="number"] {
 }
 
 input[type="number"]:focus {
-  border-color: #70AD47;
+  border-color: var(--accent-color);
   outline: none;
 }
 
-/* Estilos para la tabla (centrada) */
+/* Tablas centradas (para el MatrixEditor) */
 table {
   width: auto;
   margin: 0 auto;
@@ -107,7 +137,7 @@ table td {
   padding: 0.5rem;
 }
 
-/* Transición fade (para MatrixEditor y resultados) */
+/* Transiciones */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
@@ -115,7 +145,6 @@ table td {
   opacity: 0;
 }
 
-/* Transición slide-down para el header */
 .slide-down-enter-active {
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
