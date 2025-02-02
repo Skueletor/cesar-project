@@ -1,0 +1,130 @@
+/* src/assets/style.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fff; /* Fondo blanco */
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* Encabezado y navegación con colores del ejemplo */
+  header {
+    background-color: #1F497D; /* Azul oscuro */
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  nav {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .nav-button {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    background-color: #70AD47; /* Verde */
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-button:hover {
+    background-color: #548235; /* Verde más oscuro */
+  }
+  
+  /* Estilos para los botones del menú principal (OperationMenu) */
+  .menu-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #70AD47;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    min-width: 120px;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-button:hover {
+    background-color: #548235;
+  }
+  
+  .operator {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Botones para operaciones (Suma, Resta, Multiplicación) */
+  button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #70AD47;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    text-align: center;
+  }
+  
+  button:hover {
+    background-color: #548235;
+  }
+  
+  /* Inputs para números */
+  input[type="number"] {
+    width: 60px;
+    padding: 0.3rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="number"]:focus {
+    border-color: #70AD47;
+    outline: none;
+  }
+  
+  /* Estilos para la tabla (centrada) */
+  table {
+    width: auto;
+    margin: 0 auto;
+  }
+  
+  table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+  
+  /* Transición fade (para MatrixEditor y resultados) */
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter-from, .fade-leave-to {
+    opacity: 0;
+  }
+  
+  /* Transición slide-down para el header */
+  .slide-down-enter-active {
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  .slide-down-enter-from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .slide-down-enter-to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  

@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #fff; /* Fondo blanco */
   color: #333;
 }
 
@@ -13,9 +13,9 @@ body {
   padding: 1rem;
 }
 
-/* Header y navegación: fondo azul y botones verdes */
+/* Encabezado y navegación con colores del ejemplo */
 header {
-  background-color: #3498db; /* Azul */
+  background-color: #1F497D; /* Azul oscuro */
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -30,26 +30,26 @@ nav {
   text-decoration: none;
   font-weight: bold;
   padding: 0.5rem 1rem;
-  background-color: #2ecc71; /* Verde */
+  background-color: #70AD47; /* Verde */
   border-radius: 4px;
   text-align: center;
-  color: white;
+  color: #fff;
   transition: background-color 0.3s;
 }
 
 .nav-button:hover {
-  background-color: #27ae60;
+  background-color: #548235; /* Verde más oscuro */
 }
 
-/* Botones de operación en OperationMenu */
+/* Estilos para los botones del menú principal (OperationMenu) */
 .menu-button {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  background-color: #2ecc71;
-  color: white;
+  background-color: #70AD47;
+  color: #fff;
   padding: 1rem;
   border-radius: 8px;
   min-width: 120px;
@@ -57,12 +57,28 @@ nav {
 }
 
 .menu-button:hover {
-  background-color: #27ae60;
+  background-color: #548235;
 }
 
 .operator {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+}
+
+/* Botones para operaciones (Suma, Resta, Multiplicación) */
+button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: #70AD47;
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #548235;
 }
 
 /* Inputs para números */
@@ -76,7 +92,7 @@ input[type="number"] {
 }
 
 input[type="number"]:focus {
-  border-color: #2ecc71;
+  border-color: #70AD47;
   outline: none;
 }
 
@@ -91,7 +107,7 @@ table td {
   padding: 0.5rem;
 }
 
-/* Transición fade (usada en MatrixEditor y resultados) */
+/* Transición fade (para MatrixEditor y resultados) */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
