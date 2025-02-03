@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- Header animado solo en rutas distintas de "/" -->
     <transition name="slide-down">
       <header v-if="$route.path !== '/'" class="header">
         <nav>
@@ -13,11 +12,16 @@
     <main>
       <router-view />
     </main>
+    <!-- New footer -->
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from './components/Footer.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: { Footer }
 }
 </script>
